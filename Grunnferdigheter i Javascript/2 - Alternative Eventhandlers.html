@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 - Alternative eventhandlers</title>
+    <style>
+        body 
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        .textborder
+        {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 60px;
+            width: 65%;
+        }
+        .textbox
+         {
+             border: 1px solid black;
+             width: 300px;
+             height: 300px;
+             display: flex;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: column;
+         }
+         .eventhandler
+         {
+             width: 200px;
+             height: 100px;
+             border: 1px solid black;
+             display: flex;
+             justify-content: center;
+             text-align: center;
+             overflow: scroll;
+             overflow-x: hidden;
+         }
+    </style>
+</head>
+<body onload="testOnLoad()">
+    <h1>Ferdighet 2a - Alternative eventhandlere: onchange osv.</h1>
+    <div class="textborder">
+        <div class="textbox">
+            <h4>Onchange & OnInput Test</h4>
+            <input type="text" onchange="testOnChange()" oninput="testOnInput()" />
+            <div class="eventhandler">
+                <h5 id="Onchangetext"></h5>
+            </div>
+        </div>
+        <div class="textbox">
+            <h3 onmouseover="testOnMouseOver()">OnMouseOver Test</h3>
+            <div class="eventhandler">
+                <h5 id="OnMouseOvertext"></h5>
+            </div>
+        </div>
+        <div class="textbox">
+            <h3 onmouseout="testOnMouseOut()">OnMouseOut Test</h3>
+            <div class="eventhandler">
+                <h5 id="OnMouseOuttext"></h5>
+            </div>
+        </div>
+        <div class="textbox">
+            <h3 ondblclick="testOnDblClick()">OnDblClick Test</h3>
+            <div class="eventhandler">
+                <h5 id="OnDblClicktext"></h5>
+            </div>
+        </div>
+        <div class="textbox">
+            <h3 oncontextmenu="testOncontexMenu()">OncontexMenu Test</h3>
+            <div class="eventhandler">
+                <h5 id="OncontexMenutext"></h5>
+            </div>
+        </div>
+        <div class="textbox">
+            <h3 onkeydown="onKeyDownMenu()">OnKeyDown Test</h3>
+            <input type="text" onkeydown="onKeyDownMenu()"/>
+            <div class="eventhandler">
+                <h5 id="OnKeyDownMenutext"></h5>
+            </div>
+        </div>
+    </div>
+    <script>
+        function testOnLoad() 
+        {
+            document.getElementById('info').innerHTML += '<li>onload</li>';
+            console.log('onload')
+        }
+
+        function testOnChange() 
+        {
+            document.getElementById('Onchangetext').innerHTML += '<li>onchange</li>';
+            console.log('onchange')
+        }
+
+        function testOnInput() 
+        {
+            document.getElementById('Onchangetext').innerHTML += '<li>oninput</li>';
+            console.log('oninput')
+        }
+
+        function testOnMouseOver() 
+        {
+            document.getElementById('OnMouseOvertext').innerHTML += '<li>onmouseover</li>';
+            console.log('onmouseover')
+        }
+
+        function testOnMouseOut() 
+        {
+            document.getElementById('OnMouseOuttext').innerHTML += '<li>onmouseout</li>';
+            console.log('onmouseout')
+        }
+        function testOnDblClick() 
+        {
+            document.getElementById('OnDblClicktext').innerHTML += '<li>ondblclick</li>';
+            console.log('ondblclick')
+        }
+        function testOncontexMenu() 
+        {
+            document.getElementById('OncontexMenutext').innerHTML += '<li>OncontexMenu</li>'
+            console.log('OncontexMenu')
+        }
+        function onKeyDownMenu() 
+        {
+            document.getElementById('OnKeyDownMenutext').innerHTML += '<li>OnKeyDownMenu</li>'
+            console.log('OnKeyDownMenu')
+        }
+    </script>
+</body>
+</html>
