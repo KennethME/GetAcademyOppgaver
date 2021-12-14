@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 1 - Onclick -> endre innerHTML</title>
+    <style>
+        body 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        .textbox
+         {
+             border: 1px solid black;
+             width: fit-content;
+             height: 300px;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             flex-direction: column;
+         }
+
+    </style>
+</head>
+<body>
+    <div class="textbox">
+        <p>Kjøre funksjon som endrer innerTHML til enement ut fra id</p>
+        <h3 id="text">Du har ikke forandret teksten</h3>
+        <br>
+        <button onclick="changeText()">Klikker her</button>
+    </div>
+    <div class="textbox">
+        <p>Kjøre funksjon som endrer innerTHML basert på quiz svar</p>
+        <h2>Klikk på den grønne fargen</h2>
+        <button onclick="wrongAnswer()" style="background-color: red; color:white">Klikker her</button>
+        <button onclick="wrongAnswer()" style="background-color: blue; color:white">Klikker her</button>
+        <button onclick="rightAnswer()" style="background-color: green; color:white">Klikker her</button>
+        <h3 id="textFarge">Du har ikke valgt et svar</h3>
+    </div>
+    <script>
+        function changeText()
+        {
+            document.getElementById('text').innerHTML = 'Du har forandret teksten. Godt jobbet!'
+        }
+        function wrongAnswer()
+        {
+            document.getElementById('textFarge').innerHTML = "Feil farge!"
+            document.getElementById('textFarge').style.color = "red"
+        }
+        function rightAnswer()
+        {
+            document.getElementById('textFarge').innerHTML = "Riktig farge!"
+            document.getElementById('textFarge').style.color = "green"
+        }
+    </script>
+</body>
+</html>
