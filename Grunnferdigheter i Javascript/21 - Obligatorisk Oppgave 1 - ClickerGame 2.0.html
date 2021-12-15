@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body 
+        {
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          align-items: center;
+          
+          width: 100vw;
+          height: 100vh;
+          gap: 30px;
+          margin: 0;
+          padding: 0;
+        }
+        div
+        {
+            display: flex;
+        }
+        #image
+        {
+            font-size: 600%;
+            
+        }
+        #pointsInfo 
+        {
+            font-size: 200%;
+            user-select: none;
+            
+        }
+        .textbox
+       {
+           border: 1px solid black;
+           width: 300px;
+           height: 300px;
+           display: flex;
+           text-align: center;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column;
+           padding: 20px;
+       }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        // model
+        var points = 0;
+        var pointsPerClick = 1;
+        var smileyIndex = 0;
+        var antiCheat = '';
+
+         // view
+         updateView();
+        function updateView() {
+            var smiley = getSmiley(smileyIndex);
+            document.getElementById('app').innerHTML = `
+            <div class="textbox">
+                <div id="image" onclick="doClick()">${smiley}</div>
+                <div id="pointsInfo">${points}</div>
+            </div>
+            <div class="textbox">
+                <button ${antiCheat}onclick="buyUpgrade(10)">Kjøp oppgradering (10 poeng)</button> <br>
+                <button ${antiCheat}onclick="BuyUpgradeBoost(15)">Kjøp boost (15 poeng)</button> <br>
+                <button ${antiCheat}onclick="cheat()">Juks (Beware)</button> 
+            </div>
+            
+            `;
+        }
+
+        // hjelpefunksjoner
+        function getSmiley(aSmileyIndex) {
+            if(aSmileyIndex == 0) return '😀';
+            if(aSmileyIndex == 1) return '😁';
+            if(aSmileyIndex == 2) return '😂';
+            if(aSmileyIndex == 3) return '😡';
+            return '';
+        }
+
+        function getNextSmileyIndex(aSmileyIndex) {
+            const maxSmileyIndex = 1;
+            aSmileyIndex++;
+            if (aSmileyIndex > maxSmileyIndex) {
+                aSmileyIndex = 0;
+            }
+            return aSmileyIndex;
+        }
+
+        // controller
+        function cheat() {
+            smileyIndex = 3;
+            points = "Cheater"
+            pointsPerClick = "Cheater";
+            antiCheat = "disabled=";
+            updateView();
+        }
+
+        function BuyUpgradeBoost(upgradeCost) {
+            if (points < upgradeCost) return;
+            points -= upgradeCost;
+            pointsPerClick = pointsPerClick * 10;
+            smileyIndex = 2;
+            updateView();
+            
+        }
+
+        function doClick() {
+            if(antiCheat == "disabled=") return;
+            points += pointsPerClick;
+            smileyIndex = getNextSmileyIndex(smileyIndex);
+            updateView();
+        }
+
+        function buyUpgrade(upgradeCost) {
+            if (points < upgradeCost) return;
+            points -= upgradeCost;
+            pointsPerClick++;
+            updateView();
+        }
+
+       
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body 
+      {
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          align-items: center;
+          width: 100vw;
+          height: 100vh;
+          gap: 30px;
+          margin: 0;
+          padding: 0;
+      }
+      .textbox
+       {
+           border: 1px solid black;
+           width: fit-content;
+           height: fit-content;
+           display: flex;
+           text-align: center;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column;
+           padding: 20px;
+       }
+      .textbox2
+       {
+           
+           width: fit-content;
+           height: fit-content;
+           display: flex;
+           text-align: center;
+           justify-content: center;
+           align-items: center;
+           flex-direction: row;
+           gap: 20px;
+           
+       }
+      .choisebox
+       {
+           border: 0.1px solid black;
+           background-color: rgb(231, 231, 231);
+           width: 200px;
+           height: 200px;
+           display: flex;
+           flex-wrap: wrap;
+           text-align: center;
+           justify-content: center;
+           align-items: center;
+           flex-direction: row;
+       }
+        
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        var btnBestill = document.getElementById('bestill');
+        var infoDiv = '';
+        var bunnTykk = document.getElementById('tykkBunn');
+        var bunnTynn = document.getElementById('tynnBunn');
+        var fyllTaco = document.getElementById('fyllTaco');
+        var fyllKylling = document.getElementById('fyllKylling');
+        var fyllPepperoni = document.getElementById('fyllPepperoni');
+        var strStor = document.getElementById('stor');
+        var strMiddels = document.getElementById('middels');
+        var strLiten = document.getElementById('liten');
+
+
+        // Model
+
+
+
+        // View
+
+        updateView();
+        function updateView() 
+        {
+         document.getElementById('app').innerHTML = `
+         
+         <div class="textbox">
+            <p>Ferdighet 9f - Valgsetninger - Sammenligne flere ting på en gang (og og eller sammen)</p>
+            <h3>Pizza-bestilling</h3>
+            <div id="info" style="padding-bottom: 20px;">${infoDiv}</div>
+            <div class="textbox2">
+
+                <div class="choisebox">
+                    Bunn: <input id="tykkBunn" type="radio" name="bunn" onchange="info(this)" />Tykk
+                    <input id="tynnBunn" type="radio" name="bunn" onchange="info(this)" />Tynn <br />
+                </div>
+
+                <div class="choisebox">
+                    Fyll: <input id="fyllTaco" type="radio" name="fyll" onchange="info()" />Taco
+                    <input id="fyllKylling" type="radio" name="fyll" onchange="info()" />Kylling
+                    <input id="fyllPepperoni" type="radio" name="fyll" onchange="info()" />Pepperoni<br />
+                </div>
+
+                <div class="choisebox">
+                    Størrelse: <input id="stor" type="radio" name="str" onchange="info()" />Stor
+                    <input id="middels" type="radio" name="str" onchange="info()" />Middels
+                    <input id="liten" type="radio" name="str" onchange="info()" />Liten<br />
+                    <button id="bestill" disabled="" onclick="alert('Bestilt!');">Bestill</button>
+                </div>
+
+            </div>
+            <ul>
+                <li>Oppgave: Legg til et fyll til</li>
+                <li>Oppgave: Legg til en ting til i pizza-bestillingen, for eksempel firkantet eller rund pizza</li>
+            </ul>
+        </div>`;   
+}
+
+
+
+        // Controller
+
+
+        function info(denne) {
+            var value = denne.id;
+            value.isChecked;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            if ((bunnTykk.checked || bunnTynn.checked) &&
+                (fyllTaco.checked || fyllKylling.checked || fyllPepperoni.checked) &&
+                (strStor.checked || strMiddels.checked || strLiten.checked)) {
+                infoDiv = 'Du har fylt ut alt og er klar til å bestille!';
+                btnBestill.disabled = false;
+            } else {
+                infoDiv = 'Du har ikke valgt:';
+                if (bunnTykk.checked || bunnTynn.checked) {                    
+                } else {
+                   infoDiv += '<li>bunn</li>';
+                }
+                if (!bunnTykk.checked && !bunnTynn.checked) {
+                    infoDiv += '<li>bunn</li>';
+                }
+                if (!fyllTaco.checked && !fyllKylling.checked && !fyllPepperoni.checked) {
+                    infoDiv += '<li>fyll</li>';
+                }
+                if (!strStor.checked && !strMiddels.checked && !strLiten.checked) {
+                    infoDiv += '<li>størrelse</li>';
+                }
+            }
+            updateView();
+        }
+    </script>
+</body>
+</html>

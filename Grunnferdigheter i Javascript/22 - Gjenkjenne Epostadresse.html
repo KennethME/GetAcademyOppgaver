@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gjenkjenne Epostadresse</title>
+    <style>
+        body 
+        {
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          align-items: center;
+          
+          width: 100vw;
+          height: 100vh;
+          gap: 30px;
+          margin: 0;
+          padding: 0;
+        }
+        #app
+        {
+            display: flex;
+            gap: 20px;
+        }
+        .textbox
+       {
+           border: 1px solid black;
+           width: 300px;
+           height: 300px;
+           display: flex;
+           text-align: center;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column;
+           padding: 20px;
+       }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        // Model
+        var email = '';
+        var emailRequirements = '';
+        var answer = '';
+        
+        
+        // View
+        updateView()
+        function updateView()
+        {
+         document.getElementById('app').innerHTML = /*html*/`
+         <div class="textbox">
+            <p>Vennligst skriv inn din Epost Adresse:</p> 
+            <br>
+            <input type="text" name="email" oninput="email = this.value" />   
+            <button type="submit" onclick="validateEmail()">Send</button> 
+        </div>
+        <div class="textbox">
+            <p>Your email:</p>
+            ${emailRequirements}
+            ${answer}
+
+        </div>
+         `   
+        }
+
+
+        // Controller
+        function validateEmail()
+        {
+           if(email.includes(".@.") && !email.includes(" "))
+           {
+            emailRequirements   = `Your Email is correct`;
+            answer              = `<b style="color:Green">${email}</b>`;
+           } 
+           else if(email.includes(".@.") && email.includes(" "))
+           {
+            emailRequirements   = `<li>Your email can not include space " "</li>`;
+            answer              = `<b style="color:red">${email}</b>`;
+           }
+           else if(!email.includes(".@.") && email.includes(" "))
+           {
+            emailRequirements   =`<li>Your email can not include space " "</li> <br>
+                                <li>Your email must include .@.</li>`;
+            answer              = `<b style="color:red">${email}</b>`;
+           }
+           else if(!email.includes(".@.") && !email.includes(" "))
+           {
+            emailRequirements   = `<li>Your email must include .@. " "</li>`;
+            answer              = `<b style="color:red">${email}</b>`;
+           }
+           updateView();
+        }
+    </script>
+    
+</body>
+</html>
