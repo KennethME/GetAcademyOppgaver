@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipping i MVC</title>
+    <style>
+        body 
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .textbox
+         {
+             border: 1px solid black;
+             width: 300px;
+             height: 300px;
+             display: flex;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: column;
+         }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // Model
+        let guessNumber;
+        let secretNumber;
+        // View
+
+        updateView();
+        function updateView() 
+        {
+            const guessText = guessNumber == null ? '' : `Du tippet ${guessNumber}<br/>`;
+            let isCorrectOrNotText = '';
+            if(guessNumber==null){
+                isCorrectOrNotText = 'Skriv inn tallet du vil tippe i feltet under og trykk på knappen';
+            }
+            else if(guessNumber === secretNumber){
+                isCorrectOrNotText = '<b>Du har tippet riktig!</b>';
+            } 
+            else if(guessNumber < secretNumber){
+                isCorrectOrNotText = '<b>Du har tippet for lavt</b>';
+                }
+                if(guessNumber > secretNumber){
+                isCorrectOrNotText = '<b>Du har tippet for høyt</b>'
+                }
+            
+
+                
+            document.getElementById('app').innerHTML = `
+            <div class="textbox">
+                <h2>Tipp-Tall-Test</h2>
+
+                ${guessText}
+                ${isCorrectOrNotText}
+
+                <input type="text" oninput="guessNumber = parseInt(this.value)"/>
+                <button onclick="guessGame()">Tipp</button>
+                <button onclick="startGame()">Start på nytt</button>
+         
+            </div>
+            `;
+        }
+        // Controller
+        startGame()
+        function startGame() {
+            guessNumber = null;
+            secretNumber = Math.ceil(Math.random() * 100);
+            updateView();
+        }
+        function guessGame() {
+            updateView();
+            
+        }
+
+
+    </script>
+</body>
+</html>

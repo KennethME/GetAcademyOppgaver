@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC Input felts</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // model
+        var personName = null;
+        var age = null;
+        var address = null;
+
+        // view
+        updateView();
+        function updateView() {
+            var nameTxt = personName ? `Hei, ${personName}!` : 'Fyll ut navn i tekstfeltet.';
+            var ageTxt = age ? `Du er ${age} år gammel.` : 'Velg alder i slideren';
+            var adrTxt = address ? `Din adresse er: ${address}` : `Fyll ut din adresse`
+            document.getElementById('app').innerHTML = `
+                Hva heter du? <br/>
+                <input 
+                    type="text" 
+                    oninput="personName = this.value; "
+                    value="${personName || ''}"
+                />
+                <br/>
+                Hvor gammel er du? <br/>
+                <br/>
+                <input 
+                    type="range" 
+                    min="1" 
+                    max="120" 
+                    step="1" 
+                    value="${age || 20}"
+                    onchange="age = this.value;"                    
+                /><br/>
+                Hvor bor du? <br/>
+                <input type="text" oninput="address = this.value;" value="${address || ''}"/><br/>
+                <button onclick="register()">Registrer</button>
+                <button onclick="reset()">Reset</button>
+                <h3>Se her:</h3>
+                <hr/>
+                ${nameTxt}
+                <hr/>
+                ${ageTxt}
+                <hr/>
+                ${adrTxt}
+                `;
+        }
+
+        function register(){
+            alert(personName + ' ' + age + ' ' + address);
+            updateView();
+        }
+        function reset() {
+        var personName = null;
+        var age = null;
+        var address = null;
+        updateView();
+        }
+    </script>
+</body>
+</html>
