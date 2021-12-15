@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valgsetninger</title>
+    <style>
+        body 
+      {
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          align-items: center;
+          width: 100vw;
+          height: 100vh;
+          gap: 30px;
+          margin: 0;
+          padding: 0;
+      }
+      #app
+      {
+          display: flex;
+      }
+      .textbox
+       {
+           border: 1px solid black;
+           width: 300px;
+           height: 300px;
+           display: flex;
+           text-align: center;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column;
+       }
+      .colorbox
+       {
+           border: 1px solid black;
+           width: 300px;
+           height: 300px;
+           display: flex;
+           text-align: center;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column;
+       }
+      .textboxbtn
+       {
+           border: 1px solid black;
+           width: 300px;
+           height: 300px;
+           gap: 34px;
+           display: flex;
+           flex-wrap: wrap;
+           text-align: center;
+           justify-content: center;
+           align-items: center;
+           flex-direction: row;
+       }
+  </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+
+        // Model
+        let backColor = '';
+
+        // View
+
+        updateView();
+        function updateView() {
+            document.getElementById('app').innerHTML = `
+            
+            <div class="textbox">
+                <label for="colorChooser">Velg en farge:</label>
+                <select name="colorChooser" onchange="changeColor(this)">
+                    <option value="Blue">Blue</option>
+                    <option value="Black">Black</option>
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
+                    <option value="Grey">Grey</option>
+                </select>
+            </div>
+            <div class="colorbox" style="${backColor}"></div>
+
+            `
+            
+        }
+
+        // Controller
+        function changeColor(denne) {
+            var value = denne.value
+            backColor = `background-color: ${value}`
+            updateView();
+        }
+
+
+    </script>
+</body>
+</html>

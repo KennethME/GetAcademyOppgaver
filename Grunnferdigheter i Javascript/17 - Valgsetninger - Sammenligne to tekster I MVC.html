@@ -33,52 +33,54 @@
 </head>
 <body>
     <div id="app"></div>
-    <div class="textbox">
-        <p>Ferdighet 9b - Valgsetninger - Sammenligne to tekster</p>
-        <div id="info"></div>
-        <p>Endre på tekstene! (Prøv også å fylle ut tall: 11, 101, 102)</p>
-        <input type="text" id="txt1" oninput="findFirst()" value="Per" /><br />
-        <input type="text" id="txt2" oninput="findFirst()" value="Pål" /><br />
-        <input type="text" id="txt3" oninput="findFirst()" value="Espen" /><br />
-    </div>
+    
 
 
     <script>
-        var infoDiv = document.getElementById('info');
-        var txtDiv1 = document.getElementById('txt1');
-        var txtDiv2 = document.getElementById('txt2');
-        var txtDiv3 = document.getElementById('txt3');
+        var txt1 = 'Per';
+        var txt2 = 'Pål';
+        var txt3 = 'Espen';
+        var infoDiv = '';
 
         
 
+        
+        function updateView() {
+            document.getElementById('app').innerHTML = `
+            <div class="textbox">
+                <p>Ferdighet 9b - Valgsetninger - Sammenligne to tekster</p>
+                <div>${infoDiv}</div>
+                <p>Endre på tekstene! (Prøv også å fylle ut tall: 11, 101, 102)</p>
+                <input type="text" id="txt1" oninput="txt1=this.value" onchange="findFirst()" value="${txt1}" /><br />
+                <input type="text" id="txt2" oninput="txt2=this.value" onchange="findFirst()" value="${txt2}" /><br />
+                <input type="text" id="txt3" oninput="txt3=this.value" onchange="findFirst()" value="${txt3}" /><br />
+                
+            </div>
+            `;
+        }
         findFirst();
-
         function findFirst() {
-            var txt1 = txtDiv1.value;
-            var txt2 = txtDiv2.value;
-            var txt3 = txtDiv3.value;
 
-            infoDiv.innerText = '';
+            infoDiv = '';
 
-            if (txt1 == txt2) infoDiv.innerHTML += 'Tekst 1 og 2 er like<br/>';
-            if (txt1 != txt2) infoDiv.innerHTML += '<del>Tekst 1 og 2 er like</del><br/>';
+            if (txt1 == txt2) infoDiv += 'Tekst 1 og 2 er like<br/>';
+            if (txt1 != txt2) infoDiv += '<del>Tekst 1 og 2 er like</del><br/>';
 
-            //if (txt1 == txt2) infoDiv.innerHTML += 'Tekst 1 og 2 er like<br/>';
-            //else infoDiv.innerHTML += '<del>Tekst 1 og 2 er like</del><br/>';
+            if (txt1 == txt3) infoDiv += 'Tekst 1 og 3 er like<br/>';
+            if (txt1 != txt3) infoDiv += '<del>Tekst 1 og 3 er like</del><br/>';
 
-            if (txt1 == txt3) infoDiv.innerHTML += 'Tekst 1 og 3 er like<br/>';
-            if (txt1 != txt3) infoDiv.innerHTML += '<del>Tekst 1 og 3 er like</del><br/>';
-            if (txt3 == txt2) infoDiv.innerHTML += 'Tekst 2 og 3 er like<br/>';
-            if (txt3 != txt2) infoDiv.innerHTML += '<del>Tekst 2 og 3 er like</del><br/>';
+            if (txt3 == txt2) infoDiv += 'Tekst 2 og 3 er like<br/>';
+            if (txt3 != txt2) infoDiv += '<del>Tekst 2 og 3 er like</del><br/>';
 
-            infoDiv.innerHTML += 'Om vi sorterer de tre tekstene, er denne den første:<br/>';
+            infoDiv += 'Om vi sorterer de tre tekstene, er denne den første:<br/>';
             if (txt1 <= txt2) {
-                if (txt3 <= txt1) infoDiv.innerHTML += txt3;
-                else infoDiv.innerHTML += txt1;
+                if (txt3 <= txt1) infoDiv += txt3;
+                else infoDiv += txt1;
             } else {
-                if (txt3 <= txt2) infoDiv.innerHTML += txt3;
-                else infoDiv.innerHTML += txt2;
+                if (txt3 <= txt2) infoDiv += txt3;
+                else infoDiv += txt2;
             }
+            updateView();
         }
     </script>
 </body>

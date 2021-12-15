@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable innenfor/utenfor Funksjon I MVC</title>
+    <style>
+          body 
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        #app
+        {
+            display: flex;
+        }
+        .textbox
+         {
+             border: 1px solid black;
+             width: 300px;
+             height: 300px;
+             display: flex;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: column;
+         }
+        .textboxbtn
+         {
+             border: 1px solid black;
+             width: 300px;
+             height: 300px;
+             gap: 34px;
+             display: flex;
+             flex-wrap: wrap;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: row;
+         }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+
+
+        // Model
+
+        let codeInput;
+        let codeHistory = '';
+        let correctCode = "333";
+
+        // View
+
+        updateView();
+        function updateView() 
+        {
+            
+
+        const codeText = codeInput == null ? '' : `${codeInput}`
+        
+        document.getElementById('app').innerHTML = /*html*/`
+          
+        
+        <div class="textboxbtn">
+            <button onclick="codeFunction(this)" style="width: 65px; height: 65px;" value="1">1</button>
+            <button onclick="codeFunction(this)" style="width: 65px; height: 65px;" value="2">2</button>
+            <button onclick="codeFunction(this)" style="width: 65px; height: 65px;" value="3">3</button>
+            <button onclick="codeFunction(this)" style="width: 65px; height: 65px;" value="4">4</button>
+            <button onclick="codeFunction(this)" style="width: 65px; height: 65px;" value="5">5</button>
+            <button onclick="codeFunction(this)" style="width: 65px; height: 65px;" value="6">6</button>
+            <button onclick="codeFunction(this)" style="width: 65px; height: 65px;" value="7">7</button>
+            <button onclick="codeFunction(this)" style="width: 65px; height: 65px;" value="8">8</button>
+            <button onclick="codeFunction(this)" style="width: 65px; height: 65px;" value="9">9</button>
+        </div>
+        <div class="textbox">
+            <h3>Du har trykket:</h3>
+            <h4>${codeText}</h4>
+            <h4>${codeHistory}</h4>
+            <br>
+            <button onclick="reset()">Reset</button>
+            <del>Svaret er 333</del>
+        </div>
+        
+          `  
+        }
+
+        //  Controller
+
+        function codeFunction(detteTallet)
+        {
+            codeInput = '';
+            codeInput += detteTallet.value;
+            codeHistory += codeInput;
+            if(codeHistory === correctCode){
+                codeHistory = '333 er Riktig. <br/>Bra Jobbet'
+            }
+            updateView();
+        }
+        function reset() {
+            location.reload();
+            
+        }
+    </script>
+</body>
+</html>
