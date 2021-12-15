@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kode ved lasting Vs Funksjon</title>
+    <style>
+        body 
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .textbox
+         {
+             border: 1px solid black;
+             width: 300px;
+             height: 300px;
+             display: flex;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: column;
+         }
+    </style>
+</head>
+<body>
+    <div class="textbox">
+        <p>Ferdighet 5 - Kode som kjøres når siden lastes vs kode i en funksjon</p>
+        <button onclick="doClick()">Trykk her</button>
+        Prøv også å reloade siden.
+    </div>
+    <div class="textbox">
+        <p>Ferdighet 5 - Tidspunkt når siden lastes inn</p>
+        <button onclick="timeClick()">Trykk her</button>
+        <p id="time"></p>
+    </div>
+
+    <script>
+        alert('Dette skjer når siden lastes');
+        document.getElementById('time').innerHTML = '' + new Date().toTimeString() + '</br>';
+
+        function doClick() 
+        {
+            alert('Dette skjer når funksjonen doClick starter');
+        }
+        function timeClick() 
+        {
+            document.getElementById('time').innerHTML += '' + new Date().toTimeString() + '</br>';
+        }
+    </script>
+</body>
+</html>

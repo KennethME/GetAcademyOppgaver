@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bygge dynamisk HTML</title>
+    <style>
+        body 
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .textboxborder
+        {
+            width: 80%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+        }
+        .textbox
+         {
+             width: fit-content;
+             height: fit-content;
+             display: flex;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: row;
+             gap: 20px;
+         }
+         .textboxoption
+         {
+             width: 200px;
+             height: 200px;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             border: 2px solid black;
+         }
+    </style>
+</head>
+<body>
+<h1>Ferdighet 6 - Sette sammen tekst av flere deler  og  bruke dette til å bygge HTML dynamisk</h1>
+<div class="textboxborder">
+    <div class="textbox">
+        <div class="textboxoption">
+            <label>Størrelse</label>
+            <input id="sizeSlider" type="range" min="100" max="500" step="10" oninput="showDiv()" />
+        </div>
+
+        <div class="textboxoption">
+            <label>Teksten</label>
+            <input id="textInput" type="text" oninput="showDiv()" value="endre teksten!" />
+        </div>
+
+        <div class="textboxoption">
+            <label>Farge</label>
+            <select id="colorChooser" onchange="showDiv()">
+                <option value="red">Red color</option>
+                <option selected value="green">Green color</option>
+                <option value="blue">Blue color</option>
+            </select>
+        </div>
+        <div class="textboxoption">
+            <label>Ramme Farge</label>
+            <select id="borderChooser" onchange="showDiv()">
+                <option value="black">Black border</option>
+                <option value="grey">grey border</option>
+                <option value="none">No border</option>
+            </select>
+        </div>
+        <div class="textboxoption">
+            <label>Ramme Radius</label>
+            <input id="radiusSlider" type="range" min="0" max="100" step="1">
+        </div>
+    </div>
+    <div id="resultat"></div>
+    <div id="resultatHtml" style="font-family: monospace"></div>
+</div>
+
+    <script>
+        var resultatDiv = document.getElementById('resultat');
+        var resultatHtmlDiv = document.getElementById('resultatHtml');
+        var sizeSlider = document.getElementById('sizeSlider');
+        var radiusSlider = document.getElementById('radiusSlider');
+        var textInput = document.getElementById('textInput');
+        var colorChooser = document.getElementById('colorChooser');
+        var borderChooser = document.getElementById('borderChooser')
+
+        showDiv();
+
+        function showDiv() {
+            resultatDiv.innerHTML = '<div style="'
+                + 'background-color: ' + colorChooser.value + '; '
+                + 'border: 4px solid ' + borderChooser.value + '; '
+                + 'border-radius: ' + radiusSlider.value + 'px; '
+                + 'width: ' + sizeSlider.value + 'px; '
+                + 'height: ' + sizeSlider.value + 'px; '
+                + 'display: flex; align-items: center; justify-content: center; text-align: center;">' +
+                textInput.value + '</div>';
+            resultatHtmlDiv.innerText = resultatDiv.innerHTML;
+        }
+    </script>
+</body>
+</html>

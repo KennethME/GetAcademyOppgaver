@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nøkkelord This</title>
+    <style>
+         body 
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .textbox
+         {
+             border: 1px solid black;
+             width: 300px;
+             height: 300px;
+             display: flex;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: column;
+         }
+    </style>
+</head>
+<body>
+    <div class="textbox">
+        <p>Ferdighet 3 - spesialtilfelle, this og gjøre noe med det elementet man trykker på (eller som utløser eventet)</p>
+        <h2 id="z" onclick="doSomething(this)">Dette er tekst A</h2>
+        <h2 id="y" onclick="doSomething(this)">Dette er tekst B</h2>
+    </div>
+    <div class="textbox">
+        <table>
+            <tr>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+            </tr>
+            <tr>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+            </tr>
+            <tr>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+            </tr>
+            <tr>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+                <td onmouseover="fromOtoX(this)">o</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function doSomething(thisText) 
+        {
+            thisText.innerHTML = 'Du har forandret teksten';
+        }
+        function fromOtoX(thisText)
+        {
+            thisText.innerHTML = 'x';
+        }
+    </script>
+</body>
+</html>

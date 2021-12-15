@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endre på style</title>
+    <style> 
+        body 
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .textboxborder
+        {
+            width: 80%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: row;
+            border: 2px solid black;
+        }
+        .textbox
+         {
+             width: 200px;
+             height: 150px;
+             display: flex;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: row;
+             border: 2px solid black;
+             gap: 20px;
+         }
+        .textbox2
+         {
+             width: 200px;
+             height: 150px;
+             display: flex;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: row;
+             gap: 20px;
+         }
+         .textboxoption
+         {
+             width: fit-content;
+             height: fit-content;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+         }
+        .selected
+        {
+            border: 3px thick red;
+        }
+        .stilig 
+        {
+            background-color: blueviolet;
+        }
+        .border
+        {
+            border: 2px solid rgb(240, 38, 122);
+        }
+        .opacity
+        {
+            opacity: 0.3;
+        }
+        .radius
+        {
+            border-radius: 50%;
+        }
+        .stilig2
+        {
+            background-color: brown;
+        }
+        .valgt
+        {
+            border: dotted black;
+        }
+    </style>
+</head>
+<body>
+    <div class="textboxborder">
+        <div class="textbox" id="leftBox" onclick="selectedbox(this.id)"></div>
+        <div class="textbox2">
+            <div class="textboxoption">
+                <label>Border Style</label>
+                <input id="chk" type="checkbox" onchange="toggleStyle(this)" />
+            </div>
+            <div class="textboxoption">
+                <label>Background Color</label>
+                <input id="chk2" type="checkbox" onchange="toggleStyle(this)" />
+            </div>
+            <div class="textboxoption">
+                <label>Opacity Style</label>
+                <input id="chk3" type="checkbox" onchange="toggleStyle(this)" />
+            </div>
+            <div class="textboxoption">
+                <label>Radius Style</label>
+                <input id="chk4" type="checkbox" onchange="toggleStyle(this)" />
+            </div>
+            <div class="textboxoption">
+                <label>Background Color2</label>
+                <input id="chk5" type="checkbox" onchange="toggleStyle(this)" />
+            </div>
+        </div>
+        <div class="textbox" id="rightBox" onclick="selectedbox(this.id)"></div>
+    </div>    
+</body>
+<script>
+    function selectedbox(box_id) 
+    {
+        var isClicked = document.getElementById(box_id).clicked
+        document.getElementById(box_id).classList.toggle('valgt', isClicked);
+    }
+    function toggleStyle() 
+    {
+        
+        var isChecked = document.getElementById('chk').checked;
+        var isChecked2 = document.getElementById('chk2').checked;
+        var isChecked3 = document.getElementById('chk3').checked;
+        var isChecked4 = document.getElementById('chk4').checked;
+        var isChecked5 = document.getElementById('chk5').checked;;
+        document.getElementById('leftBox').classList.toggle('border', isChecked);
+        document.getElementById('leftBox').classList.toggle('stilig', isChecked2);
+        document.getElementById('leftBox').classList.toggle('opacity', isChecked3);
+        document.getElementById('leftBox').classList.toggle('radius', isChecked4);
+        document.getElementById('leftBox').classList.toggle('stilig2', isChecked5);
+    }
+    
+</script>
+</html>

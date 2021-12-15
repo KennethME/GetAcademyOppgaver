@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variabel Regnestykke</title>
+    <style>
+         body 
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .textboxborder
+        {
+            width: 80%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: row;
+        }
+        .textbox
+         {
+             width: 400px;
+             height: 350px;
+             display: flex;
+             text-align: center;
+             justify-content: center;
+             align-items: center;
+             flex-direction: column;
+             border: 2px solid black;
+             gap: 20px;
+         }
+         #resultat
+         {
+             text-align: start;
+         }
+    </style>
+</head>
+<body>
+    <h1>Ferdighet 7 - Sette variabel til resultat av et regnestykke. </h1>
+    <div class="textboxborder">
+        <div class="textbox">
+            <label id=tallALabel></label>
+            <input id="tallA" type="range" min="1" max="100" step="1" oninput="calculate()" value="2" />
+            <label id=tallBLabel></label>
+            <input id="tallB" type="range" min="1" max="100" step="1" oninput="calculate()" value="2" />
+            <div id="ABresultat"></div>
+        </div>
+        <div class="textbox">
+            <p>Ferdighet 7 - Sette resultat fra bredde og omkrets</p>
+            <label id="tallCLabel"></label>
+            <input id="tallC" type="range" min="1" max="1000" step="1" oninput="calculate2()" value="2">
+            <label id="tallDLabel"></label>
+            <input id="tallD" type="range" min="1" max="1000" step="1" oninput="calculate2()" value="2">
+            <div id="CDresultat"></div>
+        </div>
+    </div>
+    <script>
+        var ABresultatDiv = document.getElementById('ABresultat');
+        var CDresultatDiv = document.getElementById('CDresultat');
+        var tallAInput = document.getElementById('tallA');
+        var tallBInput = document.getElementById('tallB');
+        var tallALabel = document.getElementById('tallALabel')
+        var tallBLabel = document.getElementById('tallBLabel')
+        var tallCInput = document.getElementById('tallC')
+        var tallDInput = document.getElementById('tallD')
+        var tallCLabel = document.getElementById('tallCLabel')
+        var tallDLabel = document.getElementById('tallDLabel')
+
+
+        calculate();
+        calculate2();
+
+        function calculate() {
+            var tallA = parseInt(tallAInput.value);
+            var tallB = parseInt(tallBInput.value);
+            var sum = tallA + tallB;
+            var differense = tallA - tallB;
+            var produkt = tallA * tallB;
+            var kvotient = tallA / tallB;
+
+            tallALabel.innerHTML = 'Tall A: ' + tallA;
+            tallBLabel.innerHTML = 'Tall B: ' + tallB;
+
+            ABresultatDiv.innerHTML = 'Sum = ' +
+                tallA + ' + ' + tallB + '=' + sum + '<br/> Difference = ' +
+                tallA + ' - ' + tallB + '=' + differense + '<br/> Produkt = ' +
+                tallA + ' * ' + tallB + '=' + produkt + '<br/> Kvotient = ' +
+                tallA + ' / ' + tallB + '=' + kvotient;
+
+        }
+        function calculate2()
+        {
+            var tallC = parseInt(tallCInput.value);
+            var tallD = parseInt(tallDInput.value);
+
+            var areal = tallC * tallD; 
+            var omkrets = (2*tallC)*(2*tallD);
+
+            tallCLabel.innerHTML = 'Tall C: ' + tallC;
+            tallDLabel.innerHTML = 'Tall D: ' + tallD;
+
+            CDresultatDiv.innerHTML = 'Areal = ' + tallC + ' * ' + tallD + ' = ' + areal + 
+                                    '</br> Omkrets = ' + '2*' + tallC + ' * ' + '2*' + tallD + ' = ' + omkrets;
+        }
+    </script>
+</body>
+</html>
