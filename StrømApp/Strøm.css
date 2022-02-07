@@ -1,0 +1,43 @@
+body
+{
+    width: 100vw;
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#app
+{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.column
+{
+    display: flex;
+    flex-direction: column;
+}
+.textBox
+{
+    width: 250px;
+    height: 250px;
+    border: 0.3px solid black;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.termoBox
+{
+    gap: 5px;
+    width: 250px;
+    height: 250px;
+    border: 0.3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
